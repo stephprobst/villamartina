@@ -8,7 +8,7 @@
 
     <!-- This is the image gallery stuff: -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
     <style>
       .galleria {
         width: 100%;
@@ -149,7 +149,7 @@
     <div class="w3-top">
       <div
         class="w3-bar w3-white w3-padding w3-card"
-        style="letter-spacing: 4px"
+        style="letter-spacing: 4px; z-index: 100000;"
       >
         <a href="#home" class="w3-bar-item w3-button">Villa Martina</a>
         <!-- Right-sided navbar links. Hide them on small screens -->
@@ -255,52 +255,45 @@
           </p>
         </div>
 
-        <div class="iframe-rwd">
-          <iframe
-            width="425"
-            height="350"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30148.740925336835!2d-0.7193355594958121!3d37.94917809378444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6307de0eeb9279%3A0xe3e0a3bbb074c6ad!2sC.%20Navia%2C%205%2C%2003189%20Orihuela%2C%20Alicante%2C%20Spanien!5e0!3m2!1sde!2sde!4v1676730649084!5m2!1sde!2sde"
-          ></iframe>
-        </div>
-      </div>
+        <div id="map" style="height: 400px;"></div>
+        <p class="w3-large w3-text-grey" style="text-align: center">
+            To open the location in Google Maps, click <a href="https://goo.gl/maps/SEdYrzVbEQWnVVvb7" target="_blank">here</a> (external link).
+          </p>
+      
 
       <hr style="border: 1px solid grey" />
 
       <div class="w3-row w3-padding-64" id="photos">
         <h1 class="w3-center">Photos</h1>
-      <div class="galleria">
-        <img src="images/gallery/1.png" />
-        <img src="images/gallery/2.png" />
-        <img src="images/gallery/3.png" />
-        <img src="images/gallery/4.png" />
-        <img src="images/gallery/5.png" />
-        <img src="images/gallery/6.png" />
-        <img src="images/gallery/7.png" />
-        <img src="images/gallery/8.png" />
-        <img src="images/gallery/9.png" />
-        <img src="images/gallery/10.png" />
-        <img src="images/gallery/11.png" />
-        <img src="images/gallery/12.png" />
-        <img src="images/gallery/13.png" />
-        <img src="images/gallery/14.png" />
-        <img src="images/gallery/15.png" />
-        <img src="images/gallery/16.png" />
-        <img src="images/gallery/17.png" />
-        <img src="images/gallery/18.png" />
-        <img src="images/gallery/19.png" />
-        <img src="images/gallery/20.png" />
-        <img src="images/gallery/21.png" />
-        <img src="images/gallery/22.png" />
-        <img src="images/gallery/23.png" />
-        <img src="images/gallery/24.png" />
+        <div class="galleria">
+          <img src="images/gallery/1.png" />
+          <img src="images/gallery/2.png" />
+          <img src="images/gallery/3.png" />
+          <img src="images/gallery/4.png" />
+          <img src="images/gallery/5.png" />
+          <img src="images/gallery/6.png" />
+          <img src="images/gallery/7.png" />
+          <img src="images/gallery/8.png" />
+          <img src="images/gallery/9.png" />
+          <img src="images/gallery/10.png" />
+          <img src="images/gallery/11.png" />
+          <img src="images/gallery/12.png" />
+          <img src="images/gallery/13.png" />
+          <img src="images/gallery/14.png" />
+          <img src="images/gallery/15.png" />
+          <img src="images/gallery/16.png" />
+          <img src="images/gallery/17.png" />
+          <img src="images/gallery/18.png" />
+          <img src="images/gallery/19.png" />
+          <img src="images/gallery/20.png" />
+          <img src="images/gallery/21.png" />
+          <img src="images/gallery/22.png" />
+          <img src="images/gallery/23.png" />
+          <img src="images/gallery/24.png" />
+        </div>
       </div>
-    </div>
 
-    <hr style="border: 1px solid grey" />
+      <hr style="border: 1px solid grey" />
 
       <!-- Availability Section -->
       <div class="w3-row w3-padding-64" id="availability">
@@ -338,11 +331,42 @@
       <!-- End page content -->
     </div>
 
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-32">
+      <a
+        href="impressum.html"
+        title="Impressum"
+        target="_blank"
+        class="w3-hover-text-green"
+        >Impressum</a
+      >
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a
+      href="privacy_policy.html"
+      title="PrivacyPolicy"
+      target="_blank"
+      class="w3-hover-text-green"
+      >Privacy Policy</a
+    >
+    </footer>
+
     <script>
-        (function() {
-            Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js');
-            Galleria.run('.galleria');
-        }());
+      (function () {
+        Galleria.loadTheme(
+          "https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js"
+        );
+        Galleria.run(".galleria");
+      })();
+    </script>
+    <script>
+      var map = L.map('map').setView([37.95396254076414, -0.74890880198889], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      var marker = L.marker([37.95396254076414, -0.74890880198889]).addTo(map);
     </script>
   </body>
 </html>
