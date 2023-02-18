@@ -121,7 +121,7 @@
               start: "2023-01-01",
               end: "2023-04-01",
               display: "background",
-              color: "red",
+              color: "grey",
             },
             {
               // House already booked.
@@ -324,6 +324,9 @@
           />
           <label for="message">Your message:</label>
           <textarea id="message" name="message" rows="4"></textarea>
+          <label for="message" style="font-size: smaller;">I have read and accept the <a href="/privacy_policy.html" target="_blank">privacy policy</a>. I acknowledge and accept, that this contact form will be processed by <a href="https://formspree.io/" target="_blank">Formspree, Inc.</a> (external link) and that the data will be processed in compliance with the european GDPR rules under the <a href="https://formspree.io/legal/privacy-policy/">formspree privacy policy</a> (external link) &nbsp;&nbsp;
+          <input type="checkbox" name="policy_accept" id="policy_accept" value="no" required style="display: inline;">
+        </label>
           <input type="submit" value="Send request" />
         </form>
       </div>
