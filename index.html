@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>W3.CSS Template</title>
+    <title>Villa Martina</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <!-- This is the image gallery stuff: -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.min.js"></script>
+    <style>
+      .galleria {
+        width: 100%;
+        max-width: 1000px;
+        height: 500px;
+        background: black;
+      }
+    </style>
 
     <style>
       body {
@@ -145,6 +157,7 @@
           <a href="#welcome" class="w3-bar-item w3-button">Welcome</a>
           <a href="#about" class="w3-bar-item w3-button">About</a>
           <a href="#directions" class="w3-bar-item w3-button">Directions</a>
+          <a href="#photos" class="w3-bar-item w3-button">Photos</a>
           <a href="#availability" class="w3-bar-item w3-button">Availability</a>
           <a href="#contact" class="w3-bar-item w3-button">Contact</a>
         </div>
@@ -164,8 +177,6 @@
         class="w3-image"
         src="images/main.png"
         alt="Front view of Vila Martina"
-        width="1000"
-        height="400"
       />
       <div class="w3-display-bottomleft w3-padding-large w3-opacity">
         <h1 class="w3-xxlarge">Villa Martina</h1>
@@ -230,7 +241,6 @@
           Alicante, Orihuela, Mar Menor, and Cartagena. The region has an
           exceptionally pleasant climate throughout the year.
         </p>
-
       </div>
 
       <hr style="border: 1px solid grey" />
@@ -259,6 +269,38 @@
       </div>
 
       <hr style="border: 1px solid grey" />
+
+      <div class="w3-row w3-padding-64" id="photos">
+        <h1 class="w3-center">Photos</h1>
+      <div class="galleria">
+        <img src="images/gallery/1.png" />
+        <img src="images/gallery/2.png" />
+        <img src="images/gallery/3.png" />
+        <img src="images/gallery/4.png" />
+        <img src="images/gallery/5.png" />
+        <img src="images/gallery/6.png" />
+        <img src="images/gallery/7.png" />
+        <img src="images/gallery/8.png" />
+        <img src="images/gallery/9.png" />
+        <img src="images/gallery/10.png" />
+        <img src="images/gallery/11.png" />
+        <img src="images/gallery/12.png" />
+        <img src="images/gallery/13.png" />
+        <img src="images/gallery/14.png" />
+        <img src="images/gallery/15.png" />
+        <img src="images/gallery/16.png" />
+        <img src="images/gallery/17.png" />
+        <img src="images/gallery/18.png" />
+        <img src="images/gallery/19.png" />
+        <img src="images/gallery/20.png" />
+        <img src="images/gallery/21.png" />
+        <img src="images/gallery/22.png" />
+        <img src="images/gallery/23.png" />
+        <img src="images/gallery/24.png" />
+      </div>
+    </div>
+
+    <hr style="border: 1px solid grey" />
 
       <!-- Availability Section -->
       <div class="w3-row w3-padding-64" id="availability">
@@ -295,5 +337,12 @@
 
       <!-- End page content -->
     </div>
+
+    <script>
+        (function() {
+            Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js');
+            Galleria.run('.galleria');
+        }());
+    </script>
   </body>
 </html>
