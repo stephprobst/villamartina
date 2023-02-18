@@ -92,64 +92,22 @@
       }
     </style>
 
-    <!-- Include Leaflet CSS file -->
+    <!-- Leaflet imports -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
     />
-
-    <!-- Include Leaflet JavaScript file -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var calendarEl = document.getElementById("calendar");
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: "dayGridMonth",
-          selectable: true,
-          selectOverlap: false,
-          headerToolbar: {
-            left: "prev,next",
-            center: "title",
-            right: "dayGridMonth,dayGridYear", // user can switch between the two
-          },
-          events: [
-            {
-              // House not yet ready.
-              start: "2023-01-01",
-              end: "2023-04-01",
-              display: "background",
-              color: "grey",
-            },
-            {
-              // House already booked.
-              start: "2023-05-15",
-              end: "2023-05-22",
-              display: "background",
-              color: "red",
-            },
-          ],
-          select: function (info) {
-            var startDate = moment(info.start).format("YYYY-MM-DD");
-            var endDate = moment(info.end)
-              .subtract(1, "days")
-              .format("YYYY-MM-DD");
-            document.getElementById("start").value = startDate;
-            document.getElementById("end").value = endDate;
-          },
-        });
-        calendar.render();
-      });
-    </script>
+    <script src="scripts/calendar.js"></script>
   </head>
   <body>
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div
         class="w3-bar w3-white w3-padding w3-card"
-        style="letter-spacing: 4px; z-index: 100000;"
+        style="letter-spacing: 4px; z-index: 100000"
       >
         <a href="#home" class="w3-bar-item w3-button">Villa Martina</a>
         <!-- Right-sided navbar links. Hide them on small screens -->
@@ -255,11 +213,15 @@
           </p>
         </div>
 
-        <div id="map" style="height: 400px;"></div>
+        <div id="map" style="height: 400px"></div>
         <p class="w3-large w3-text-grey" style="text-align: center">
-            To open the location in Google Maps, click <a href="https://goo.gl/maps/SEdYrzVbEQWnVVvb7" target="_blank">here</a> (external link).
-          </p>
-      
+          To open the location in Google Maps, click
+          <a href="https://goo.gl/maps/SEdYrzVbEQWnVVvb7" target="_blank"
+            >here</a
+          >
+          (external link).
+        </p>
+      </div>
 
       <hr style="border: 1px solid grey" />
 
@@ -324,9 +286,26 @@
           />
           <label for="message">Your message:</label>
           <textarea id="message" name="message" rows="4"></textarea>
-          <label for="message" style="font-size: smaller;">I have read and accept the <a href="/privacy_policy.html" target="_blank">privacy policy</a>. I acknowledge and accept, that this contact form will be processed by <a href="https://formspree.io/" target="_blank">Formspree, Inc.</a> (external link) and that the data will be processed in compliance with the european GDPR rules under the <a href="https://formspree.io/legal/privacy-policy/">formspree privacy policy</a> (external link) &nbsp;&nbsp;
-          <input type="checkbox" name="policy_accept" id="policy_accept" value="no" required style="display: inline;">
-        </label>
+          <label for="message" style="font-size: smaller"
+            >I have read and accept the
+            <a href="/privacy_policy.html" target="_blank">privacy policy</a>. I
+            acknowledge and accept, that this contact form will be processed by
+            <a href="https://formspree.io/" target="_blank">Formspree, Inc.</a>
+            (external link) and that the data will be processed in compliance
+            with the european GDPR rules under the
+            <a href="https://formspree.io/legal/privacy-policy/"
+              >formspree privacy policy</a
+            >
+            (external link) &nbsp;&nbsp;
+            <input
+              type="checkbox"
+              name="policy_accept"
+              id="policy_accept"
+              value="no"
+              required
+              style="display: inline"
+            />
+          </label>
           <input type="submit" value="Send request" />
         </form>
       </div>
@@ -345,12 +324,12 @@
       >
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a
-      href="privacy_policy.html"
-      title="PrivacyPolicy"
-      target="_blank"
-      class="w3-hover-text-green"
-      >Privacy Policy</a
-    >
+        href="privacy_policy.html"
+        title="PrivacyPolicy"
+        target="_blank"
+        class="w3-hover-text-green"
+        >Privacy Policy</a
+      >
     </footer>
 
     <script>
@@ -362,7 +341,10 @@
       })();
     </script>
     <script>
-      var map = L.map('map').setView([37.95396254076414, -0.74890880198889], 13);
+      var map = L.map("map").setView(
+        [37.95396254076414, -0.74890880198889],
+        13
+      );
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
