@@ -1,8 +1,299 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Welcome to Villa Martina</h1>
-<p>This page is currently under construction... Please come back later.</p>
-<p>Have a great day!</p>
-</body>
+  <head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <style>
+      body {
+        font-family: "Open Sans", "Sans Serif";
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Open Sans";
+        letter-spacing: 5px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+      }
+      input[type="text"]:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+      textarea {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+      }
+      textarea:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .iframe-rwd {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+      .iframe-rwd iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <!-- Include Leaflet CSS file -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <!-- Include Leaflet JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          selectable: true,
+          selectOverlap: false,
+          headerToolbar: {
+            left: "prev,next",
+            center: "title",
+            right: "dayGridMonth,dayGridYear", // user can switch between the two
+          },
+          events: [
+            {
+              // House not yet ready.
+              start: "2023-01-01",
+              end: "2023-04-01",
+              display: "background",
+              color: "red",
+            },
+            {
+              // House already booked.
+              start: "2023-05-15",
+              end: "2023-05-22",
+              display: "background",
+              color: "red",
+            },
+          ],
+          select: function (info) {
+            var startDate = moment(info.start).format("YYYY-MM-DD");
+            var endDate = moment(info.end)
+              .subtract(1, "days")
+              .format("YYYY-MM-DD");
+            document.getElementById("start").value = startDate;
+            document.getElementById("end").value = endDate;
+          },
+        });
+        calendar.render();
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div
+        class="w3-bar w3-white w3-padding w3-card"
+        style="letter-spacing: 4px"
+      >
+        <a href="#home" class="w3-bar-item w3-button">Villa Martina</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          <a href="#welcome" class="w3-bar-item w3-button">Welcome</a>
+          <a href="#about" class="w3-bar-item w3-button">About</a>
+          <a href="#directions" class="w3-bar-item w3-button">Directions</a>
+          <a href="#availability" class="w3-bar-item w3-button">Availability</a>
+          <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="w3-display-container w3-content w3-wide"
+      style="max-width: 1000px; min-width: 500px"
+      id="home"
+    >
+      <br />
+      <br />
+      <br />
+      <img
+        class="w3-image"
+        src="images/main.png"
+        alt="Front view of Vila Martina"
+        width="1000"
+        height="400"
+      />
+      <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+        <h1 class="w3-xxlarge">Villa Martina</h1>
+      </div>
+    </header>
+    <br />
+    <!-- Page content -->
+    <div class="w3-content" style="max-width: 1000px">
+      <!-- Welcome Section -->
+      <div class="w3-row w3-padding-64" id="welcome">
+        <div class="w3-colw3-padding-large">
+          <h1 class="w3-center">Vacation at last!</h1>
+          <h5 class="w3-center">A place to rest and enjoy the sun.</h5>
+          <p class="w3-large w3-text-grey">
+            Welcome to the homepage of our "Villa Martina" in the village of
+            Villamartin. We hope you'll decide to stay with us and will enjoy
+            the Orihuela Costa region as much as we do.
+          </p>
+        </div>
+      </div>
+
+      <hr style="border: 1px solid grey" />
+
+      <!-- About Section -->
+      <div class="w3-row w3-padding-64" id="about">
+        <div class="w3-colw3-padding-large"></div>
+        <h1 class="w3-center">About Villa Martina</h1>
+        <p class="w3-large w3-text-grey">
+          This beautiful fully equipped villa with a private pool is located
+          near beaches and golf courses. It has automatic shutters that ensure a
+          restful sleep. The villa is modern and air-conditioned, with three
+          bedrooms, three bathrooms, and a private pool. The open plan living
+          and dining area includes a fully equipped kitchen and is filled with
+          lovely midday and evening sun. There are three bedrooms in total, with
+          two having en-suite bathrooms and access to the balcony. The third
+          bedroom is on the ground floor and has a separate bathroom.
+        </p>
+        <p class="w3-large w3-text-grey">
+          The roof has a large sun terrace with sun loungers and a shaded
+          sitting area, which offers an unobstructed panoramic view. The sun
+          terrace includes an outdoor kitchen with a refrigerator where you can
+          enjoy chilled drinks at sunset. The terrace is equipped with a table,
+          barbecue, deck chairs, and an umbrella. The villa cannot be seen from
+          outside and has a private heated pool. There is also free Wi-Fi and
+          international channels (English, French, German, Spanish, etc.).
+        </p>
+        <p class="w3-large w3-text-grey">
+          The villa is conveniently located near several beaches (Cabo Roig,
+          Campoamor, Punta Prima, La Zenia, Playa Flamenca) and golf courses
+          (Las Ramblas, Campoamor, Villamartin, and Las Colinas), as well as all
+          amenities. Villamartin Plaza, which is 2 km away, has a pharmacy,
+          restaurants, pubs, bank, hairdresser, and a supermarket. The Plaza in
+          Villamartin also offers free live music, ambiance, and performances
+          from one of the many bars and restaurants. Aldi is located at 900
+          meters.
+        </p>
+        <p class="w3-large w3-text-grey">
+          In just 10 minutes, you can reach the shopping center Zénia Boulevard,
+          which has more than 150 stores and restaurants. It is open daily from
+          10:00 to 22:00. A few kilometers away is the city of Torrevieja, which
+          has a lively atmosphere. Other nearby cities include Murcia, Elche,
+          Alicante, Orihuela, Mar Menor, and Cartagena. The region has an
+          exceptionally pleasant climate throughout the year.
+        </p>
+
+      </div>
+
+      <hr style="border: 1px solid grey" />
+
+      <!-- Map Section -->
+      <div class="w3-row w3-padding-64" id="directions">
+        <div class="w3-colw3-padding-large">
+          <h1 class="w3-center">Directions</h1>
+          <p class="w3-large w3-text-grey" style="text-align: center">
+            03189 Villamartín <br />
+            Calle Navia 5
+          </p>
+        </div>
+
+        <div class="iframe-rwd">
+          <iframe
+            width="425"
+            height="350"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30148.740925336835!2d-0.7193355594958121!3d37.94917809378444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6307de0eeb9279%3A0xe3e0a3bbb074c6ad!2sC.%20Navia%2C%205%2C%2003189%20Orihuela%2C%20Alicante%2C%20Spanien!5e0!3m2!1sde!2sde!4v1676730649084!5m2!1sde!2sde"
+          ></iframe>
+        </div>
+      </div>
+
+      <hr style="border: 1px solid grey" />
+
+      <!-- Availability Section -->
+      <div class="w3-row w3-padding-64" id="availability">
+        <div class="w3-col w3-padding-large">
+          <h1 class="w3-center">Availability</h1>
+          <br />
+          <div id="calendar"></div>
+        </div>
+      </div>
+
+      <hr style="border: 1px solid grey" />
+
+      <!-- Contact Section -->
+      <div class="w3-container w3-padding-64" id="contact">
+        <h1 class="w3-center">Booking request:</h1>
+        <form action="https://formspree.io/f/xyyawzro" method="POST">
+          <label for="start">Arrival date:</label>
+          <input type="date" id="start" name="start" required />
+          <label for="end">Departure date:</label>
+          <input type="date" id="end" name="end" required />
+          <label for="email">Your email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          />
+          <label for="message">Your message:</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+          <input type="submit" value="Send request" />
+        </form>
+      </div>
+
+      <!-- End page content -->
+    </div>
+  </body>
 </html>
