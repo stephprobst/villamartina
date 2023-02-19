@@ -90,6 +90,23 @@
         width: 100%;
         height: 100%;
       }
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 8px;
+      }
+
+      th {
+        text-align: center;
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
     </style>
 
     <!-- Leaflet imports -->
@@ -104,7 +121,7 @@
   </head>
   <body>
     <!-- Navbar (sit on top) -->
-    <div class="w3-top" style="z-index: 100;">
+    <div class="w3-top" style="z-index: 100">
       <div
         class="w3-bar w3-white w3-padding w3-card"
         style="letter-spacing: 4px"
@@ -116,7 +133,13 @@
           <div
             id="menu"
             class="w3-bar-block w3-card-2 w3-hide-medium w3-hide-large"
-            style="position: absolute; top: 60px; right: 0; display: none; background-color: white;"
+            style="
+              position: absolute;
+              top: 60px;
+              right: 0;
+              display: none;
+              background-color: white;
+            "
           >
             <a
               href="index.html#about"
@@ -263,7 +286,7 @@
           </p>
         </div>
 
-        <div id="map" style="height: 400px; z-index: 1;"></div>
+        <div id="map" style="height: 400px; z-index: 1"></div>
         <p class="w3-large w3-text-grey" style="text-align: center">
           To open the location in Google Maps, click
           <a href="https://goo.gl/maps/SEdYrzVbEQWnVVvb7" target="_blank"
@@ -313,6 +336,16 @@
           <h1 class="w3-center">Availability</h1>
           <br />
           <div id="calendar"></div>
+          <br />
+          <h3 class="w3-center">Seasonal prices:</h3>
+          <p class="w3-large w3-text-grey" style="text-align: left">
+            The prices listed below are including power, heating and water and
+            excluding 21% VAT. Pool heating is available for an extra fee of
+            15,- Euro per day. Select arrival and departure date in form below
+            to see the full price for your stay.
+          </p>
+          <table class="w3-large w3-text-grey" id="priceTable"></table>
+          <p class="w3-large w3-text-grey" style="text-align: center">.</p>
         </div>
       </div>
 
@@ -323,9 +356,21 @@
         <h1 class="w3-center">Booking request:</h1>
         <form action="https://formspree.io/f/xyyawzro" method="POST">
           <label for="start">Arrival date:</label>
-          <input type="date" id="start" name="start" onchange="calculatePrice()" required />
+          <input
+            type="date"
+            id="start"
+            name="start"
+            onchange="calculatePrice()"
+            required
+          />
           <label for="end">Departure date:</label>
-          <input type="date" id="end" name="end" onchange="calculatePrice()" required />
+          <input
+            type="date"
+            id="end"
+            name="end"
+            onchange="calculatePrice()"
+            required
+          />
           <p class="w3-medium w3-text-grey" id="ExpectedPrice"></p>
           <label for="email">Your email:</label>
           <input
@@ -342,7 +387,7 @@
             <a href="/privacy_policy.html" target="_blank">privacy policy</a>. I
             acknowledge and accept, that this contact form will be processed by
             <a href="https://formspree.io/" target="_blank">Formspree, Inc.</a>
-            (external link) and that the data will be processed in compliance
+            (external link) that the data will be processed in compliance
             with the european GDPR rules under the
             <a href="https://formspree.io/legal/privacy-policy/"
               >formspree privacy policy</a
@@ -406,5 +451,6 @@
     </script>
     <script src="calculatePrice.js"></script>
     <script src="toggleMenu.js"></script>
+    <script src="displayPriceTable.js"></script>
   </body>
 </html>
