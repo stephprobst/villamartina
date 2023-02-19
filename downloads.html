@@ -8,12 +8,58 @@
   </head>
   <body>
     <!-- Navbar (sit on top) -->
-    <div class="w3-top">
+    <div class="w3-top" style="z-index: 100;">
       <div
         class="w3-bar w3-white w3-padding w3-card"
-        style="letter-spacing: 4px; z-index: 100000"
+        style="letter-spacing: 4px;"
       >
         <a href="index.html" class="w3-bar-item w3-button">Villa Martina</a>
+        <!-- Menu icon and dropdown menu for small screens -->
+        <div class="w3-right w3-hide-medium w3-hide-large">
+          <a class="w3-bar-item w3-button" onclick="toggleMenu()">&#9776;</a>
+          <div
+            id="menu"
+            class="w3-bar-block w3-card-2 w3-hide-medium w3-hide-large"
+            style="position: absolute; top: 60px; right: 0; display: none; background-color: white;"
+          >
+            <a
+              href="index.html#about"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >About</a
+            >
+            <a
+              href="index.html#directions"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >Directions</a
+            >
+            <a
+              href="index.html#photos"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >Photos</a
+            >
+            <a
+              href="index.html#availability"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >Availability</a
+            >
+            <a
+              href="index.html#contact"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >Booking</a
+            >
+            <a
+              href="downloads.html"
+              class="w3-bar-item w3-button"
+              onclick="toggleMenu()"
+              >Downloads</a
+            >
+          </div>
+        </div>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
           <a href="index.html#about" class="w3-bar-item w3-button">About</a>
@@ -88,5 +134,6 @@
         >Privacy Policy</a
       >
     </footer>
+    <script src="toggleMenu.js"></script>
   </body>
 </html>
