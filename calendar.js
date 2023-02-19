@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .format("YYYY-MM-DD");
         document.getElementById("start").value = startDate;
         document.getElementById("end").value = endDate;
+        calculatePrice();
       },
     });
     calendar.render();

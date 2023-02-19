@@ -100,7 +100,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
-    <script src="scripts/calendar.js"></script>
+    <script src="calendar.js"></script>
   </head>
   <body>
     <!-- Navbar (sit on top) -->
@@ -112,12 +112,12 @@
         <a href="#home" class="w3-bar-item w3-button">Villa Martina</a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-          <a href="#welcome" class="w3-bar-item w3-button">Welcome</a>
           <a href="#about" class="w3-bar-item w3-button">About</a>
           <a href="#directions" class="w3-bar-item w3-button">Directions</a>
           <a href="#photos" class="w3-bar-item w3-button">Photos</a>
           <a href="#availability" class="w3-bar-item w3-button">Availability</a>
-          <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+          <a href="#contact" class="w3-bar-item w3-button">Booking</a>
+          <a href="downloads.html" class="w3-bar-item w3-button">Downloads</a>
         </div>
       </div>
     </div>
@@ -273,9 +273,10 @@
         <h1 class="w3-center">Booking request:</h1>
         <form action="https://formspree.io/f/xyyawzro" method="POST">
           <label for="start">Arrival date:</label>
-          <input type="date" id="start" name="start" required />
+          <input type="date" id="start" name="start" onchange="calculatePrice()" required />
           <label for="end">Departure date:</label>
-          <input type="date" id="end" name="end" required />
+          <input type="date" id="end" name="end" onchange="calculatePrice()" required />
+          <p class="w3-medium w3-text-grey" id="ExpectedPrice"></p>
           <label for="email">Your email:</label>
           <input
             type="email"
@@ -353,5 +354,6 @@
 
       var marker = L.marker([37.95396254076414, -0.74890880198889]).addTo(map);
     </script>
+    <script src="calculatePrice.js"></script>
   </body>
 </html>
