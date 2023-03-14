@@ -34,3 +34,5 @@ fetch("config/prices.json")
       tbody.appendChild(row);
     }
   });
+
+  
